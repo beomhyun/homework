@@ -1,0 +1,7 @@
+select * from emp where hiredate like '2014%';
+select * from emp where ename like '%S%';
+select * from emp where isnull(comm);
+select avg(sal), max(sal), min(sal), count(*) from emp group by deptno;
+select ename, deptno, sal, (sal*12+sal*1.5) 연봉 from emp where deptno =30;
+select ename, sal, floor(sal*0.15) 경조비 from emp where sal>=2000;
+select avg(sal),sum(sal), max(sal), min(sal), count(*) from emp group by deptno order by avg(sal);
