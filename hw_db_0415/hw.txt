@@ -1,0 +1,18 @@
+/*1*/
+select e.ename,e.job,e.sal from emp e join dept d where d.loc like 'CHICAGO';
+
+/*2*/
+select empno,ename,job,deptno from emp;
+select a.empno, a.ename, a.job, a.deptno from emp a join emp b where a.empno = b.mgr;
+
+select e.empno, e.ename, e.job, e.deptno from emp e  where e.empno not in(select a.empno from emp a join emp b where a.empno = b.mgr);
+
+/*3*/
+select a.ename, a.job, a.mgr from emp a where a.mgr = (select e.mgr from emp e where e.ename like 'BLAKE');
+
+/*4*/
+select * from emp order by hiredate asc limit 5;
+
+/*5*/
+
+select e.ename, e.job, d.dname from emp e join dept d on e.deptno = d.deptno where e.mgr = (select a.empno from emp a where a.ename like 'JONES');
