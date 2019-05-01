@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SSAFY</title>
+<style>
+body {
+	background-color: #ffffff;
+	text-align: center;
+}
+
+.qna {
+	background-color: #F1F1F1;
+	text-align: center;
+	padding: 20px;
+	border-radius: 10px;
+	border: 1px solid black;
+	margin-bottom: 10px;
+}
+
+.question {
+	background-color: #32F1FF;
+	text-align: left;
+	padding: 10px;
+	margin-bottom: 15px;
+	border-radius: 10px;
+	border: 1px solid red;
+}
+
+.answer {
+	background-color: #AAB9FF;
+	text-align: left;
+	margin-left: 40px;
+	border-radius: 10px;
+	padding: 10px;
+	border: 1px solid black;
+}
+.location {
+	color: #CD2E57;
+}
+[v-clock] {	display: none;}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<span><img src ="http://edu.ssafy.com/asset/images/header-logo.jpg"><span>
+	<h2>SSAFY ê³µì§ì¬í­</h2>
+	<div id="qna">
+		<div class="qna" v-for="qna in qnas">
+			<div class="question">
+				<span class="num" v-html="qna.num"></span> : 
+				<span 	v-html="qna.quser"></span>(<span class="location"	v-html="qna.location"></span>)
+				<div  v-html="qna.question"></div>
+			</div>
+			<div class="answer">
+				<div class="quser" v-html="qna.answer"></div>
+				<span>ëµë³ì´ ì¶©ë¶íì§ ìì¼ìë©´ 1:1 ë¬¸ì ìë´ì ì´ì©í´ ì£¼ì¸ì.</span><a href="#">{{qna.manager}}</a>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var model = {
+			qnas : [
+					{
+						num : "1",
+						quser : "ê¹ëí",
+						location :"êµ¬ë¯¸2",
+						question : "í¹ì íì¬ì¬ì´í¸ ë¹ë°ë²í¸ë¥¼ ìì´ë²ë ¸ì ê²½ì° ì´ë»ê² í´ì¼ íëì?",
+						answer : '<span>ë¹ë°ë²í¸ë¥¼ ìì´ë²ë ¸ì ê²½ì° ìëì ë°©ë²ì¼ë¡ í´ê²°íìê¸¸ ë°ëëë¤.<br> <br> <strong>[ë¹ë°ë²í¸ ì°¾ê¸° ë°©ë²]<br></strong>1) íì¬ìì¤í ë¡ê·¸ì¸ íë©´ìì "ë¹ë°ë²í¸ ì°¾ê¸°" í´ë¦­ í&nbsp;ë¹ë°ë²í¸ ì¬ì¤ì <br> 2)&nbsp;ë´ë¹ ì´ìììê²&nbsp;í´ê²° ë¬¸ì&nbsp;<br>3) êµì¡ì¼í° í«ë¼ì¸ (02-3429-5041) ì¼ë¡ ë¬¸ì</span>',
+						manager : "ì¬ë¬´êµ­"
+					},
+					{
+						num : "2",
+						quser : "ê¹íê²°",
+						location : "ìì¸4",
+						question : "ì§ê°, ì¡°í´, ì¸ì¶ì ëí êµ¬ì²´ì ì¸ ê¸°ì¤ì ë¬´ìì¸ê°ì?",
+						answer : "ì§ê°, ì¡°í´, ì¸ì¶ì ê´í êµ¬ì²´ì ì¸ ê¸°ì¤ì ë¤ìê³¼ ê°ìµëë¤.<br> <strong><span>[ê·¼í ê¸°ì¤]</span></strong><br> <span>- ì§ê° ë° ì¡°í´ : êµì¡ ìì ë° ì¢ë£ìê° 10ë¶ ì´ì ë¯¸ì¤ì</span><br> <span>- ì¸ì¶ : êµì¡ìê° ä¸­ 1ìê° ì´ì ìë¦¬ ë¹ì</span><br> <span>-&nbsp;ì§ê°/ì¡°í´/ì¸ì¶ë¡ ì¸í´ ì¶ììê° 4ìê° ë¯¸ë§ì¸ ê²½ì° ê²°ì </span><span><br>â» ìì¸í ì¬í­ì ê³µì§ì¬í­ [ì¶ê²°ê´ë¦¬ ì¸ë¶ ê¸°ì¤ ìë´] ì°¸ê³ ",
+						manager : "íë¡"
+					},
+					{
+						num : "3",
+						quser : "íê¸¸ë",
+						location : "ê´ì£¼1",
+						question : "SSAFY ê³¼ì ì ë¤ëê³  ìë¤ë ê²ì ì¦ëªí  ì ìë ìë¥ë¥¼ ë°ê¸ ë°ê³  ì¶ìµëë¤. í¹ì ê´ë ¨ ìë¥ë¥¼ ë°ê¸ë°ì ì ììê¹ì?",
+						answer : '<span>SSAFY ê³¼ì ì ê´í ì¦ëªìê° íìí  ê²½ì°&nbsp;ì§ì­ë³ ìº í¼ì¤ë¡ ìì²­íìê¸¸ ë°ëëë¤.<br></span></p> <p style="line-height: 150%;"><strong><span>[ì¦ëªì ë°ê¸ ê¸°ì¤ ë° ì¢ë¥]</span></strong><br> <span>&nbsp;&nbsp;&nbsp;&nbsp; <strong>1) ìë£ì¦ ë° ì±ì  ì¦ëªì</strong></span><br> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ëì : 1íê¸° ì´ì êµì¡ ìë£ì (1íê¸° ä¸­ ì¤ëí´ìì ì ì¸)</span><br> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ë´ì© : ìë£ ê³¼ì ëª, êµì¡ê¸°ê° ë° ì´ ì´ììê° ë±</span><br> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ë°ê¸ì¼ : ìë£ì ë¹ì¼<br></span><br> <span>&nbsp;&nbsp;&nbsp;<strong>&nbsp; 2) êµì¡ ì¦ëªì</strong></span><br> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ëì : SSAFY êµì¡ ìê°ì¤ì¸ íì</span><br> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ë´ì© : êµì¡ ê³¼ì ëª, êµì¡ê¸°ê°, ì¬íê¸°ê° ë±</span><br> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ë°ê¸ì¼ : íê¸° ì¤ ìì ë°ê¸</span><br> <br> <span>&nbsp;&nbsp;&nbsp;&nbsp;<strong> 3) ì±ì ì°ì ìì¥</strong></span><br> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ëì : ì¢í©íê°, ìë§íê°, S/Wì­ëíì¤í¸ ë° ëì¸S/Wê²½ì§ëí ì±ì ì°ìì ë±</span><br> <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ë°ê¸ì¼: í´ë¹ íê° í ìì ë°ê¸',
+						manager : "ë©í°ìº í¼ì¤"
+					},
+					{
+						num : "4",
+						quser : "ì´ë¯¸ì ",
+						location : "ëì 4",
+						question : "íìì¦ì ë¶ì¤íìì ê²½ì° ì´ë»ê² í´ì¼íëì?",
+						answer : "íìì¦ ë¶ì¤ì ìëì íë¡ì¸ì¤ë¡ ì§íë©ëë¤.<br> <br> <strong>[íìì¦ ë¶ì¤ì&nbsp; ì²ë¦¬ë°©ë²]<br></strong></p> <p style='line-height: 150%;'>1) ì¬ë¬´êµ­ ë°©ë¬¸íì¬ 'íìì¦ ì¬ë°ê¸' ìì ìì±<br> 2) 'ì°ë¦¬ìí 1006-780-000704' 15,000ì ë©ë¶<br> 3) ë©ë¶ í ìê¸íì¸ì¦ (ì´ì²´íì¸ì¦)ì ì´ìììê² ì ì¶<br> 4) ë´ë¹ íë¡ íµí íìì¦ ìì·¨ (ìµë 7ì¼ ìì)</p<p style='line-height: 150%;'>ê°ìì¥ ì´ì©, ìì¬ ì´ì© ë± ì ë°ì ì¸ SSAFY íëì ì ì½ì´ ìì ì ìì¼ë¯ë¡ ë¶ì¤íì§ ìëë¡ ì£¼ìíìê¸¸ ë°ëëë¤.",
+						manager : "ì¬ë¬´êµ­"
+					},					
+					{
+						num : "5",
+						quser : "ë°ì¡ì",
+						location : "ìì¸10",
+						question : "ê°ì ì¤ ìì±í ì½ëë¥¼ Gitì ì¬ë ¤ ê´ë¦¬í´ë ë ê¹ì?",
+						answer : "SSAFYìì ìì±í ë¬¸ì ì ìì¤ì½ëë ê³µì  ë¶ê°ë¥íì§ë§, êµì¡ìì´ ì§ì  ìì±í ìì¤ì½ëì ë´ì© ì ë¦¬ë ë³´ê´ì´ ê°ë¥í©ëë¤. <br>â» SSAFYìì ì ê³µí ì½íì¸ ë¥¼ ê·¸ëë¡ ê²ìíë ê²ì ë¶ê°íë ì ìíìê¸¸ ë°ëëë¤.",
+						manager : "ì¬ë¬´êµ­"
+					}
+				]
+		};
+		var app = new Vue({
+			el : '#qna',
+			data : model
+		});
+		Vue.config.devtools = true;
+	</script>
+</body>
+</html>
